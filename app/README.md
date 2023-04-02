@@ -9,8 +9,8 @@ Go言語におけるAPM実装デモアプリケーションです。
 ## 事前準備物
 - New Relic LicenseKey
 
-```## 依存解決
-``````bash
+## 依存解決
+```bash
 go mod tidy
 go mod download
 ```
