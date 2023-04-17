@@ -20,6 +20,26 @@ services:
     init: true
     command: ['go', 'run', 'bff/main.go']
 
+  front:
+    build:
+      context: .
+      dockerfile: docker/react/Dockerfile
+    ports:
+      - "3000:80"
+    networks:
+      - app_subnet
+
+  nginx:
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    depends_on:
+      - bff
+    networks:
+      - app_subnet
+
 volumes:
   golang_mod_cache:
 
