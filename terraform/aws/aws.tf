@@ -4,8 +4,7 @@ module "vpc" {
   cidr               = "10.0.0.0/16"
   azs                = ["us-east-1a", "us-east-1c"]
   public_subnets     = ["10.0.0.0/24", "10.0.1.0/24"]
-  private_subnets    = ["10.0.2.0/24", "10.0.3.0/24"]
-  enable_nat_gateway = true
+  enable_nat_gateway = false
   enable_vpn_gateway = false
 }
 
@@ -136,11 +135,12 @@ resource "aws_iam_role" "web" {
 variable "new_relic_license_key" {}
 
 resource "aws_instance" "web" {
-  ami                    = data.aws_ssm_parameter.amazon_linux2_ami.value
-  instance_type          = "t4g.micro"
-  iam_instance_profile   = aws_iam_instance_profile.web.name
-  vpc_security_group_ids = [aws_security_group.web.id]
-  subnet_id              = module.vpc.private_subnets[0]
+  ami                         = data.aws_ssm_parameter.amazon_linux2_ami.value
+  instance_type               = "t4g.micro"
+  iam_instance_profile        = aws_iam_instance_profile.web.name
+  vpc_security_group_ids      = [aws_security_group.web.id]
+  subnet_id                   = module.vpc.public_subnets[0]
+  associate_public_ip_address = true
 
   user_data = base64encode(templatefile("${path.module}/user_data.sh", {
     new_relic_license_key = var.new_relic_license_key
