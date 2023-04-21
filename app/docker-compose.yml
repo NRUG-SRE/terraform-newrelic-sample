@@ -21,6 +21,7 @@ services:
     command: ['go', 'run', 'bff/main.go']
 
   front:
+    container_name: demo-front
     build:
       context: .
       dockerfile: docker/react/Dockerfile
@@ -30,6 +31,7 @@ services:
       - app_subnet
 
   nginx:
+    container_name: demo-nginx
     build:
       context: ./docker/nginx
       dockerfile: Dockerfile
