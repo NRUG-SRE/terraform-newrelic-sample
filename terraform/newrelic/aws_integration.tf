@@ -2,13 +2,6 @@ data "aws_iam_policy" "read_only_access" {
   name = "ReadOnlyAccess"
 }
 
-resource "aws_iam_role" "newrelic_integrations" {
-  name               = "NewRelicInfrastructure-Integrations"
-  assume_role_policy = data.aws_iam_policy_document.newrelic_integrations.json
-
-  managed_policy_arns = [data.aws_iam_policy.read_only_access.arn]
-}
-
 data "aws_iam_policy_document" "newrelic_integrations" {
   statement {
     actions = ["sts:AssumeRole"]
@@ -28,10 +21,10 @@ data "aws_iam_policy_document" "newrelic_integrations" {
   }
 }
 
-resource "aws_iam_role_policy" "view_budget_access" {
-  name   = "${local.name}-view-budget-access"
-  policy = data.aws_iam_policy_document.budget_access.json
-  role   = aws_iam_role.newrelic_integrations.id
+resource "aws_iam_role" "newrelic_integrations" {
+  name                = "NewRelicInfrastructure-Integrations"
+  assume_role_policy  = data.aws_iam_policy_document.newrelic_integrations.json
+  managed_policy_arns = [data.aws_iam_policy.read_only_access.arn]
 }
 
 data "aws_iam_policy_document" "budget_access" {
@@ -41,6 +34,12 @@ data "aws_iam_policy_document" "budget_access" {
     resources = ["*"]
   }
   version = "2012-10-17"
+}
+
+resource "aws_iam_role_policy" "view_budget_access" {
+  name   = "view-budget-access"
+  policy = data.aws_iam_policy_document.budget_access.json
+  role   = aws_iam_role.newrelic_integrations.id
 }
 
 resource "newrelic_cloud_aws_link_account" "aws_integration" {
