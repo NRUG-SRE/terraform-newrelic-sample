@@ -2,9 +2,11 @@
 set -xe
 exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 
+hostnamectl set-hostname "${application_name}"
+
 yum install -y git docker
-echo "export NEW_RELIC_LICENSE_KEY=${new_relic_license_key}" >> /root/.bash_profile
-echo "export APM_APPLICATION_NAME=${apm_application_name}" >> /root/.bash_profile
+echo "export APM_NEWRELIC_LICENSE_KEY=${new_relic_license_key}" >> /root/.bash_profile
+echo "export APM_APPLICATION_NAME=${application_name}" >> /root/.bash_profile
 
 wget https://go.dev/dl/go1.20.3.linux-arm64.tar.gz
 tar -C /usr/local -xzf go1.20.3.linux-arm64.tar.gz

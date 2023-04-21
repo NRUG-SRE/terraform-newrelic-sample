@@ -144,7 +144,7 @@ resource "aws_instance" "web" {
 
   user_data = base64encode(templatefile("${path.module}/user_data.sh", {
     new_relic_license_key = var.new_relic_license_key
-    apm_application_name  = local.name
+    application_name      = local.name
   }))
 
   root_block_device {
