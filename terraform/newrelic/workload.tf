@@ -1,3 +1,5 @@
+variable "new_relic_account_name" {}
+
 data "newrelic_account" "this" {
   name = var.new_relic_account_name
 }
