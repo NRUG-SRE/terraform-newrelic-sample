@@ -4,11 +4,21 @@
 - AWSハンズオン環境構築が完了していること
 
 ## Terraform実行に必要な事前準備
-- `terraform.tfvars`へNew RelicライセンスキーおよびAWSの認証情報を記述
+- `terraform/handson/terraform.tfvars`へ次の情報情報を記述
 
 ```text
-new_relic_license_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxNRAL"
+new_relic_api_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxNRAL"
+new_relic_account_id = "XXXXXXX"
 aws_access_key_id = ""
 aws_secret_access_key = ""
 ```
 
+## Terraformコマンド実行確認
+- 次のコマンドが実行できることを確認できたらハンズオン実施準備ができている状態です。
+
+```shell
+cd terraform/handson
+terraform init
+terraform plan
+terraform apply
+```

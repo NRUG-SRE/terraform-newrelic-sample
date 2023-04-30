@@ -1,6 +1,9 @@
-# AWSデモ環境構築
+# ハンズオン環境構築
+
+「俺たちのSREとNew Relic」の第6章3節ハンズオンのハンズオン環境構築手順を記載します。
+
 ## Terraform実行に必要な事前準備
-- `terraform.tfvars`へNew RelicライセンスキーおよびAWSの認証情報を記述
+- `terraform/aws/terraform.tfvars`へNew RelicライセンスキーおよびAWSの認証情報を記述
 
 ```text
 new_relic_license_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxNRAL"
@@ -39,3 +42,6 @@ docker compose up -d
 
 ### 接続確認
 - ALBのヘルスチェックが通ったら`http://{ALB_DNS_NAME}/bff/tracing-demo`へアクセスする
+
+
+以上、すべて問題なく実施できていればAWSハンズオン環境構築は完了です。
