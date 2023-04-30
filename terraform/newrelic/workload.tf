@@ -16,12 +16,24 @@ resource "newrelic_workload" "this" {
     data.newrelic_entity.apm.guid,
   ]
 
-  entity_search_query {
-    query = "tags.displayName like '%${local.name}%'"
-  }
-
+  # apm entities
   entity_search_query {
     query = "name LIKE 'demo-%'"
+  }
+
+  # synthetics entities
+  entity_search_query {
+    query = "(domain = 'SYNTH' AND type = 'MONITOR' AND name = '${local.name}')"
+  }
+
+  # sli entities
+  entity_search_query {
+    query = "(domain = 'EXT' AND type = 'SERVICE_LEVEL' AND name = 'Latency')"
+  }
+
+  # other entities
+  entity_search_query {
+    query = "name LIKE '%${local.name}%'"
   }
 
   scope_account_ids = [data.newrelic_account.this.id]
