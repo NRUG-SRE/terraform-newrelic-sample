@@ -1,0 +1,4 @@
+*.tf
+!terraform.tfvars
+!main.tf
+!variables.tf
