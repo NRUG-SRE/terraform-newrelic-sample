@@ -1,6 +1,6 @@
 # ハンズオン環境構築
 
-「俺たちのSREとNew Relic」の第6章3節ハンズオンのハンズオン環境構築手順を記載します。
+「俺たちのSREとNew Relic」の第6章3節ハンズオンのハンズオン環境構築手順を記載します
 
 ## Terraform実行に必要な事前準備
 - `terraform/aws/terraform.tfvars`へNew RelicライセンスキーおよびAWSの認証情報を記述
@@ -44,4 +44,12 @@ docker compose up -d
 - ALBのヘルスチェックが通ったら`http://{ALB_DNS_NAME}/bff/tracing-demo`へアクセスする
 
 
-以上、すべて問題なく実施できていればAWSハンズオン環境構築は完了です。
+以上、すべて問題なく実施できていればAWSハンズオン環境構築は完了です
+
+## ハンズオン終了後
+- 次のコマンドでリソースを削除できます
+
+```shell
+cd terraform/aws
+terraform destroy
+```
