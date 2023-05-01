@@ -5,7 +5,7 @@
 *.map
 *.log
 *.swp
-*.lock
+#*.lock
 
 ._*
 .DS_Store
