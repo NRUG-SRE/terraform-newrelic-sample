@@ -14,11 +14,20 @@ aws_secret_access_key = ""
 ```
 
 ## Terraformコマンド実行確認
-- 次のコマンドが実行できることを確認できたらハンズオン実施準備ができている状態です。
+- 次のコマンドが実行できることを確認できたらハンズオン実施準備ができている状態です
 
 ```shell
 cd terraform/handson
 terraform init
 terraform plan
 terraform apply
+```
+
+## ハンズオン終了後
+- 次のコマンドでリソースを削除できます
+- エラーが表示された場合、もう一度`terraform destroy`を実行してください
+
+```shell
+cd terraform/handson
+terraform destroy
 ```

@@ -1,18 +1,6 @@
-variable "new_relic_account_name" {}
-
-data "newrelic_account" "this" {
-  name = var.new_relic_account_name
-}
-
-data "newrelic_entity" "apm" {
-  name   = "demo"
-  type   = "APPLICATION"
-  domain = "APM"
-}
-
 resource "newrelic_workload" "this" {
   name       = local.name
-  account_id = data.newrelic_account.this.id
+  account_id = var.new_relic_account_id
 
   entity_guids = [
     data.newrelic_entity.apm.guid,
@@ -38,5 +26,5 @@ resource "newrelic_workload" "this" {
     query = "name LIKE '%${local.name}%'"
   }
 
-  scope_account_ids = [data.newrelic_account.this.id]
+  scope_account_ids = [var.new_relic_account_id]
 }
