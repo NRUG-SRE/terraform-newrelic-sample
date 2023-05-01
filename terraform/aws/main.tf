@@ -13,11 +13,12 @@ variable "aws_access_key_id" {}
 variable "aws_secret_access_key" {}
 
 provider "aws" {
-  region     = "us-east-1"
+  region     = local.region
   access_key = var.aws_access_key_id
   secret_key = var.aws_secret_access_key
 }
 
 locals {
-  name = "terraform-newrelic-sample"
+  name   = "terraform-newrelic-sample"
+  region = "us-east-1"
 }
