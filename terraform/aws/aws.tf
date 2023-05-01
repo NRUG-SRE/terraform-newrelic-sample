@@ -156,6 +156,10 @@ resource "aws_instance" "web" {
     http_endpoint = "enabled"
     http_tokens   = "required"
   }
+
+  tags = {
+    Name = local.name
+  }
 }
 
 output "alb_dns_name" {
