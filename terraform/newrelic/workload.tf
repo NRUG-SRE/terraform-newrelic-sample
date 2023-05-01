@@ -1,9 +1,3 @@
-data "newrelic_entity" "apm" {
-  name   = "demo"
-  type   = "APPLICATION"
-  domain = "APM"
-}
-
 resource "newrelic_workload" "this" {
   name       = local.name
   account_id = var.new_relic_account_id
