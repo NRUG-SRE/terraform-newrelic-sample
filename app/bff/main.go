@@ -45,6 +45,7 @@ func main() {
 	}
 
 	svr.Handle("/bff/tracing-demo", handler.NewDemo())
+	svr.Handle("/bff/tracing-demo-error", handler.NewDemoError())
 
 	done := make(chan bool, 1)
 	go func() {
