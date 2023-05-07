@@ -45,6 +45,11 @@ func main() {
 	}
 
 	svr.Handle("/bff/tracing-demo", handler.NewDemo())
+	conns, err := connection.NewDatabase(cfg.GetDatabaseConfig())
+	if err != nil {
+		sugar.Panic(err)
+	}
+	defer conns.AllClose()
 	svr.Handle("/bff/tracing-demo-error", handler.NewDemoError())
 
 	done := make(chan bool, 1)
