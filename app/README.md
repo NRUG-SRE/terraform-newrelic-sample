@@ -24,4 +24,5 @@ docker compose up -d
 ## APIの実行
 ```bash
 curl --location --request GET 'localhost:4000/bff/tracing-demo'
+curl --location --request GET 'localhost:4000/bff/tracing-demo-error'
 ```
