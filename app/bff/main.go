@@ -11,6 +11,7 @@ import (
 	"github.com/NRUG-SRE/terraform-newrelic-sample/app/bff/handler"
 	"github.com/NRUG-SRE/terraform-newrelic-sample/app/bff/internal/config"
 	"github.com/NRUG-SRE/terraform-newrelic-sample/app/bff/internal/server"
+	"github.com/NRUG-SRE/terraform-newrelic-sample/app/internal/database/connection"
 	"github.com/NRUG-SRE/terraform-newrelic-sample/app/internal/logger"
 )
 
@@ -44,12 +45,13 @@ func main() {
 		sugar.Panic(err)
 	}
 
-	svr.Handle("/bff/tracing-demo", handler.NewDemo())
 	conns, err := connection.NewDatabase(cfg.GetDatabaseConfig())
 	if err != nil {
 		sugar.Panic(err)
 	}
 	defer conns.AllClose()
+
+	svr.Handle("/bff/tracing-demo", handler.NewDemo(conns))
 	svr.Handle("/bff/tracing-demo-error", handler.NewDemoError())
 
 	done := make(chan bool, 1)
