@@ -21,6 +21,8 @@ terraform plan
 terraform apply
 ```
 
+ハンズオンで利用するALBのDNS名が表示されるので、メモしておいてください
+
 ### インスタンスへの接続
 - [gossm](https://github.com/gjbae1212/gossm)でEC2インスタンスに接続
 
