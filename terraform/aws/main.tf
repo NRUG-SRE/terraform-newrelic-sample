@@ -15,5 +15,5 @@ provider "aws" {
 
 locals {
   name   = "terraform-newrelic-sample"
-  region = "us-east-1"
+  region = local.region
 }
