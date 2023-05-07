@@ -1,0 +1,10 @@
+[mysqld]
+character-set-server        = utf8mb4
+slow_query_log              = 1
+slow_query_log_file         = /var/log/mysql/slow.log
+long_query_time             = 1
+general_log                 = 1
+general_log_file            = /var/log/mysql/query.log
+
+[mysql]
+default-character-set       = utf8mb4
