@@ -64,7 +64,7 @@ resource "newrelic_cloud_aws_integrations" "aws_integration" {
 
   vpc {
     metrics_polling_interval = 6000
-    aws_regions              = ["us-east-1"]
+    aws_regions              = [local.region]
   }
 
   billing {

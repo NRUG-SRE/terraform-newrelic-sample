@@ -25,9 +25,3 @@ chmod +x /root/.docker/cli-plugins/docker-compose
 
 systemctl start docker
 systemctl enable docker
-
-# TODO: リポジトリ公開後はghコマンドインストールは削除する
-# https://github.com/cli/cli/blob/trunk/docs/install_linux.md#amazon-linux-2-yum
-type -p yum-config-manager >/dev/null || yum install yum-utils -y
-yum-config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
-yum install gh -y
