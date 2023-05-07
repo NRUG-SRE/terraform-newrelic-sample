@@ -4,13 +4,12 @@
 - AWSハンズオン環境構築が完了していること
 
 ## Terraform実行に必要な事前準備
+- `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`などを設定し、対象のAWS環境へアクセスできるようにしておく
 - `terraform/handson/terraform.tfvars`へ次の情報情報を記述
 
 ```text
 new_relic_api_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxNRAL"
 new_relic_account_id = "XXXXXXX"
-aws_access_key_id = ""
-aws_secret_access_key = ""
 ```
 
 ## Terraformコマンド実行確認

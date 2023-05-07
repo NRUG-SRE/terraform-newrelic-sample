@@ -3,12 +3,11 @@
 「俺たちのSREとNew Relic」の第6章3節ハンズオンのハンズオン環境構築手順を記載します
 
 ## Terraform実行に必要な事前準備
+- `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`などを設定し、対象のAWS環境へアクセスできるようにしておく
 - `terraform/aws/terraform.tfvars`へNew RelicライセンスキーおよびAWSの認証情報を記述
 
 ```text
 new_relic_license_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxNRAL"
-aws_access_key_id = ""
-aws_secret_access_key = ""
 ```
 
 ## 環境構築手順
