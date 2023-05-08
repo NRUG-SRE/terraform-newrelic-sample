@@ -136,7 +136,7 @@ variable "new_relic_license_key" {}
 
 resource "aws_instance" "web" {
   ami                         = data.aws_ssm_parameter.amazon_linux2_ami.value
-  instance_type               = "t4g.micro"
+  instance_type               = "t4g.large"
   iam_instance_profile        = aws_iam_instance_profile.web.name
   vpc_security_group_ids      = [aws_security_group.web.id]
   subnet_id                   = module.vpc.public_subnets[0]
